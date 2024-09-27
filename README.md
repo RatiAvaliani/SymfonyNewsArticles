@@ -4,7 +4,7 @@ This project was created to showcase same of my abilities in Symfony, the task w
 
 How to run it:
 
-## composer install \
+## composer install
 This will install all the dependencies
 
 ## php -S 127.0.0.1:8000 -t public 
