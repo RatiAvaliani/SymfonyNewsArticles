@@ -1,0 +1,111 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+
+        <li class="page-item {{ Paginator.currentPage == 1 or Paginator.currentPage == 0 ? 'disabled' }} ">
+
+            {% if Paginator.currentPage is defined and Paginator.currentPage > 1 %}
+                {% set precedent = Paginator.currentPage - 1 %}
+            {% else %}
+                {% set precedent = 1 %}
+            {% endif %}
+
+            <a class="page-link" href="
+                {{
+                    path(
+                        'articles_by_category',
+                        {
+                            'Page' : precedent,
+                            'Category' : Paginator.categoryId
+                        }
+                    )
+
+                }}">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+
+        </li>
+
+        {% if Paginator.maxPages / 10 > 6 %}
+
+            <li class="page-item">
+                <a class="page-link" href="
+                    {{
+                        path(
+                            'articles_by_category',
+                            {
+                                'Page' : 1,
+                                'Category' : Paginator.categoryId
+                            }
+                        )
+                    }}">1</a>
+            </li>
+
+            {% for item in 1..5 %}
+                <li class="pazge-item">
+                    <a class="page-link " href="{{
+                        path(
+                            'articles_by_category',{
+                            'Page' : (Paginator.maxPages / 10 / 6 * loop.index) | number_format(0),
+                            'Category' : Paginator.categoryId}
+                        )
+                    }}">
+                        {{
+                            (Paginator.maxPages / 10 / 6 * loop.index) | number_format(0)
+                        }}
+                    </a>
+                </li>
+            {% endfor %}
+
+            <li class="page-item">
+                <a class="page-link" href={{
+                    path(
+                        'articles_by_category',
+                        {
+                            'Page' : (paginator.maxPages / 10) | number_format(0),
+                            'Category' : paginator.categoryId}
+                    )
+                }}>
+                    {{
+                        (paginator.maxPages / 10) | number_format(0)
+                    }}</a>
+            </li>
+
+        {% else %}
+            {% for item in 1..(Paginator.maxPages / 10) | number_format(0) %}
+
+                <li class="page-item {% if Paginator.currentPage == loop.index %} active {% endif %}">
+                    <a class="page-link " href="{{
+                        path(
+                            'articles_by_category',
+                            {
+                                'Page' : loop.index,
+                                'Category' : Paginator.categoryId
+                            }
+                        ) }}">{{loop.index}}</a>
+                </li>
+
+            {% endfor %}
+        {% endif %}
+
+
+        <li class="page-item {{ Paginator.currentPage >= (Paginator.maxPages / 10) | number_format ? 'disabled' }}">
+
+            {% if Paginator.currentPage == 0 %}
+                {% set suivant = 2 %}
+            {% else %}
+                {% set suivant = Paginator.currentPage + 1 %}
+            {% endif %}
+
+            <a class="page-link" href="{{
+                path('articles_by_category', {
+                    'Page' : suivant,
+                    'Category' : Paginator.categoryId
+                    }
+                )
+            }}">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+
+    </ul>
+</nav>

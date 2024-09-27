@@ -1,0 +1,111 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+
+login:
+    path: /app/login
+    methods: ['POST']
+    defaults:
+        _controller: 'App\Controller\SecurityController::LoginToken'
+
+home:
+    path: /
+    methods: ['GET']
+    defaults:
+        _controller: 'App\Controller\HomeController::Index'
+
+articles_get_comments:
+    path: /get/comment
+    methods: ['POST']
+    defaults:
+        _controller: 'App\Controller\CommentsController::Get'
+
+articles_add_comment:
+        path: /api/add/comment
+        methods: ['POST']
+        defaults:
+            _controller: 'App\Controller\CommentsController::Add'
+
+articles_remove_comment:
+    path: /api/remove/comment
+    methods: ['POST']
+    defaults:
+        _controller: 'App\Controller\CommentsController::Remove'
+
+articles_by_category:
+    path: category/{Category}/{Page}
+    methods: [ 'GET' ]
+    defaults:
+        _controller: 'App\Controller\ArticleController::ArticlesByCategory'
+
+article:
+    path: article/{id}
+    methods: [ 'GET' ]
+    defaults:
+        _controller: 'App\Controller\ArticleController::Article'
+
+admin_login:
+    path: /admin/login
+    methods: ['GET', 'POST']
+    defaults:
+        _controller: 'App\Controller\SecurityController::Login'
+
+admin_logout:
+    path: /admin/logout
+    methods: ['GET']
+    defaults:
+        _controller: 'App\Controller\SecurityController::Logout'
+
+admin_articles:
+    path: /admin/articles
+    methods: ['GET']
+    defaults:
+        _controller: 'App\Controller\ArticleController::Index'
+
+admin_article_edit:
+    path: /admin/articles/edit/{id}
+    methods: ['GET', 'POST']
+    defaults:
+        _controller: 'App\Controller\ArticleController::Edit'
+
+admin_article_add:
+    path: /admin/articles/add
+    methods: ['GET', 'POST']
+    defaults:
+        _controller: 'App\Controller\ArticleController::Add'
+
+admin_article_remove:
+    path: /admin/articles/remove/{id}
+    methods: ['GET']
+    defaults:
+        _controller: 'App\Controller\ArticleController::Remove'
+
+admin_categories:
+    path: /admin/categories
+    methods: ['GET']
+    defaults:
+        _controller: 'App\Controller\CategoryController::Index'
+
+admin_category_edit:
+    path: /admin/category/edit/{id}
+    methods: ['GET', 'POST']
+    defaults:
+        _controller: 'App\Controller\CategoryController::Edit'
+
+admin_category_add:
+    path: /admin/category/add
+    methods: ['GET', 'POST']
+    defaults:
+        _controller: 'App\Controller\CategoryController::Add'
+
+admin_category_remove:
+    path: /admin/category/remove/{id}
+    methods: ['GET']
+    defaults:
+        _controller: 'App\Controller\CategoryController::Remove'
+
+
+

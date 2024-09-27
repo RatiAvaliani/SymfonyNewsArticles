@@ -1,0 +1,28 @@
+{% extends '/main/base.html.twig' %}
+
+{% block title %}Home Page!{% endblock %}
+
+{% block stylesheets %}
+    <link href="../../assets/css/home/index.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row mt-5">
+
+            <h3>{{ CategoryTitle }}</h3>
+
+            <div class="col-lg-12">
+                <div class="row mt-5">
+
+                    {% include '/main/articles/elements/list.html.twig' %}
+                    {% include '/main/articles/elements/paginator.html.twig' %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly Articles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .article {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .article img {
+            max-width: 100%;
+            height: auto;
+        }
+        .article-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .article-categories {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<h1>Hello!</h1>
+<p>Here are this week's articles for you:</p>
+<div class="articles">
+    {% for article in articles %}
+        <div class="article">
+            {% if article.image %}
+                <img src="{{ article.image }}" alt="{{ article.title }}">
+            {% endif %}
+            <div class="article-title"><a href="{{ uri }}/article/{{ article.id }}">{{ article.title }}</a></div>
+            <div class="article-categories">
+                Categories:
+                {% for category in article.categories %}
+                    <span>{{ category.title }}</span>{{ not loop.last ? ', ' : '' }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<p>Enjoy reading!</p>
+</body>
+</html>

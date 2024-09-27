@@ -1,0 +1,21 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Admin Add Articles!{% endblock %}
+
+
+{% block javascripts %}
+    <script src="../../../assets/js/admin/articles/index.js"></script>
+{% endblock %}
+
+
+{% block main %}
+
+    <div class="row">
+        <h2>Edit Article</h2>
+    </div>
+
+    <div class="row mt-5">
+        {{ form(Form) }}
+    </div>
+
+{% endblock %}

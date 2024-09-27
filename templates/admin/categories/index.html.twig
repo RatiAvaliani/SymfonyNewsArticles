@@ -1,0 +1,54 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Categories{% endblock %}
+
+
+{% block javascripts %}
+
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+
+{% endblock %}
+
+
+{% block main %}
+
+    {% for Message in app.flashes('Messages') %}
+        <div class="alert alert-success  ">
+            {{ Message }}
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-11">
+            <h2>Categories</h2>
+        </div>
+        <div class="col-1">
+            <a href="{{ absolute_url(path('admin_category_add')) }}" type="button" class="btn btn-success"><i class="fa-solid fa-plus"></i></a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Remove</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for Category in Categories %}
+                    <tr>
+                        <td>{{ Category.id }}</td>
+                        <td>{{ Category.title }}</td>
+                        <td><a href="{{ path('admin_category_edit', {'id' : Category.id}) }}" type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        <td><a href="{{ path('admin_category_remove', {'id' : Category.id}) }}" type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
