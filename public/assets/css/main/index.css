@@ -1,0 +1,45 @@
+.login_form {
+    display: flex;
+    position: fixed;
+    top: 10em;
+    width: 40em;
+    height: 21em;
+    left: calc(50% - 20em);
+    padding: 16px;
+    background-color: #ffffff;
+    box-shadow: 4px 15px 13px gray;
+    border-top: solid 1px #ededed;
+    border-radius: 4px;
+}
+.blur_background {
+    opacity: 0.4;
+    filter: blur(8px);
+}
+.login_form form {
+    width: 100%;
+}
+.login_form .close span{
+    float: right;
+    font-size: 24px;
+    color: #ae2020;
+    cursor: pointer;
+}
+.error_border {
+    border: solid 1px red;
+}
+.error {
+    display: block;
+    text-align: center;
+    margin: 15px 0;
+    color: red;
+    font-size: 17px;
+}
+.loader {
+    width: 100px;
+    float: right;
+}
+.logout span {
+    position: relative;
+    left: -25px;
+}
+

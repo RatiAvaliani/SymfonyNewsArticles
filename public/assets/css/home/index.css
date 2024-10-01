@@ -1,0 +1,24 @@
+.card-img-top {
+    max-height: 280px;
+}
+.img-fluid {
+    max-width: 325px;
+}
+.badge {
+    border: solid 1px gray;
+    color: #6e6e6e;
+    width: 5rem;
+}
+.comments-loader {
+
+}
+.card-body .btn-primary {
+    width: 100%;
+}
+.card-title {
+    text-align: center;
+}
+.card-title a {
+    color: black;
+    text-decoration: none;
+}
